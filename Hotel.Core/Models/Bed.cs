@@ -10,6 +10,8 @@ namespace Hotel.Core.Models
     {
         public int BedNumber { get; set; }
 
+        public decimal BedPrice { get; set; } //fiyatlar yatak bazlı olcak
+
         //navigation prop
         public int RoomId { get; set; }
 

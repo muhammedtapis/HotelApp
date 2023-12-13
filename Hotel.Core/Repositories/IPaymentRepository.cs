@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Hotel.Core.Repositories
 {
-    public interface IBedRepository : IGenericRepository<Bed>
+    public interface IPaymentRepository : IGenericRepository<Payment>
     {
-        Task<IEnumerable<Bed>> GetBedsWithRoomAsync();
-
-        Task<Bed> GetSingleBedByIdWithCustomerAsync(int bedId);
+        Task<Payment> GetPaymentByIdWithCustomerAsync(int paymentId);
     }
 }

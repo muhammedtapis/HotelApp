@@ -13,8 +13,8 @@ namespace Hotel.Repository.Seeds
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Room> builder)
         {
             builder.HasData(
-                new Room() { Id = 1, FloorId = 1, Price = 2400, RoomNo = 101, IsAvailable = true, CustomerId = 1 },
-                new Room() { Id = 2, FloorId = 1, Price = 2400, RoomNo = 102, IsAvailable = false, CustomerId = 2 }
+                new Room() { Id = 1, FloorId = 1, Price = 2400, RoomNo = 101, IsAvailable = true },
+                new Room() { Id = 2, FloorId = 1, Price = 2000, RoomNo = 102, IsAvailable = false } //customer nas erişcen ona bak
                 );
         }
     }

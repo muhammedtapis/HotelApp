@@ -18,6 +18,7 @@ namespace Hotel.Core.Models
         //navigation prop. payment ile bire bir ilişki payment alt sınıf.
         public Payment Payment { get; set; }
 
-        public Room Room { get; set; } //room ile bire bir ilişki room alt sınıf.
+        public Room Room { get; set; } //room ile bire çok ilişki room üst sınıf.
+        public int RoomId { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Core.DTOs
 {
-    public class RoomDTO : BaseDTO
+    public class RoomCreateDTO
     {
         public int RoomNo { get; set; }
         public bool IsAvailable { get; set; }

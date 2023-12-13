@@ -14,8 +14,8 @@ namespace Hotel.Repository.Seeds
         public void Configure(EntityTypeBuilder<Floor> builder)
         {
             builder.HasData(
-                new Floor() { Id = 1, HotelId = 1, Name = "1. Kat" },
-                new Floor() { Id = 2, HotelId = 1, Name = "2. Kat" }
+                new Floor() { Id = 1, HostelId = 1, Name = "1. Kat" },
+                new Floor() { Id = 2, HostelId = 1, Name = "2. Kat" }
                 );
         }
     }

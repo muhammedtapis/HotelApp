@@ -14,9 +14,9 @@ namespace Hotel.Repository.Seeds
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
             builder.HasData(
-                new Customer() { Id = 1, Name = "Muhammed Ali Tapış", PassportNo = "17947122542", Address = "adana" },
-                new Customer() { Id = 2, Name = "Diyara Mamysheva", PassportNo = "20214040097", Address = "almaty" },
-                new Customer() { Id = 3, Name = "Karam", PassportNo = "17947122542", Address = "istanbul" }
+                new Customer() { Id = 1, Name = "Muhammed Ali Tapış", PassportNo = "17947122542", Address = "adana", RoomId = 1 },
+                new Customer() { Id = 2, Name = "Diyara Mamysheva", PassportNo = "20214040097", Address = "almaty", RoomId = 1 },
+                new Customer() { Id = 3, Name = "Karam", PassportNo = "17947122542", Address = "istanbul", RoomId = 2, }
                 );
         }
     }

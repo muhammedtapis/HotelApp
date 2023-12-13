@@ -9,8 +9,10 @@ namespace Hotel.Core.Repositories
 {
     public interface IRoomRepository : IGenericRepository<Room>
     {
-        Task<List<Room>> GetRoomsWithFloorAsync();
+        Task<IEnumerable<Room>> GetRoomsWithFloorAsync();
 
         Task<Room> GetSingleRoomByIdWithBedsAsync(int roomId);
+
+        Task<Room> GetSingleRoomByIdWithBedsAndCustomersAsync(int roomId);
     }
 }

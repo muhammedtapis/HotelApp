@@ -9,7 +9,7 @@ namespace Hotel.Core.Repositories
 {
     public interface IFloorRepository : IGenericRepository<Floor>
     {
-        Task<List<Floor>> GetFloorsWithHostelAsync();
+        Task<IEnumerable<Floor>> GetFloorsWithHostelAsync();
 
         Task<Floor> GetSingleFloorByIdWithRoomsAsync(int floorId);
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Core.DTOs
 {
-    internal class CustomResponseDTO<T>
+    public class CustomResponseDTO<T>
     {
         //geriye bir değer dönmek istemediğimiz responselar olabilir bunun için boş bir DTO oluşturacağız.
         public T Data { get; set; } //generic T datasını aldık
