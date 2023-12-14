@@ -9,6 +9,6 @@ namespace Hotel.Core.DTOs
 {
     public class BedWithRoomDTO : BedDTO
     {
-        public Room Room { get; set; }
+        public RoomDTO RoomDto { get; set; }
     }
 }

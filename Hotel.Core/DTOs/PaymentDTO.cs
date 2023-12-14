@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Hotel.Core.DTOs
 {
-    public class PaymentDTO
+    public class PaymentDTO : BaseDTO
     {
-        public int Id { get; set; }
         public decimal Amount { get; set; }
         public bool IsPayed { get; set; }
-        public int CustomerId { get; set; }
     }
 }

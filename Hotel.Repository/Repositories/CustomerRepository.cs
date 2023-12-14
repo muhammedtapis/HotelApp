@@ -16,6 +16,11 @@ namespace Hotel.Repository.Repositories
         {
         }
 
+        public async Task<IEnumerable<Customer>> GetCustomersWithPaymentAsync()
+        {
+            return await _context.Customers.Include(x => x.Payment).ToListAsync();
+        }
+
         public async Task<IEnumerable<Customer>> GetCustomersWithRoomAsync()
         {
             return await _context.Customers.Include(x => x.Room).ToListAsync();

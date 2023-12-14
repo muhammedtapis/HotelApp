@@ -12,5 +12,6 @@ namespace Hotel.Core.DTOs
         public bool IsAvailable { get; set; }
         public decimal Price { get; set; }
         public int FloorId { get; set; }
+        public ICollection<CustomerDTO> Customers { get; set; } //floor üzerinden room room üzerinden customer erişmek için bu lazım!!
     }
 }

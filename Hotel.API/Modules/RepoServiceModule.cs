@@ -32,6 +32,13 @@ namespace Hotel.API.Modules
             //DTO dönen servisin Dependency injectionu
             builder.RegisterType<RoomServiceWithDTO>().As<IRoomServiceWithDTO>().InstancePerLifetimeScope();
 
+            //customer service injection
+            builder.RegisterType<CustomerServiceWithDTO>().As<ICustomerServiceWithDTO>().InstancePerLifetimeScope();
+
+            builder.RegisterType<FloorServiceWithDTO>().As<IFloorServiceWithDTO>().InstancePerLifetimeScope();
+
+            builder.RegisterType<PaymentServiceWithDTO>().As<IPaymentServiceWithDTO>().InstancePerLifetimeScope();
+
             var apiAssembly = Assembly.GetExecutingAssembly(); //apinin assemblysi
             var repoAssembly = Assembly.GetAssembly(typeof(AppDbContext)); //repository katmanında herhangi bir classı verdik ordan assmbly bilgisi alcaz.
             var serviceAssembly = Assembly.GetAssembly(typeof(MapProfile)); //aynı şekilde servis katmanında da assembly bilgisine eriştik

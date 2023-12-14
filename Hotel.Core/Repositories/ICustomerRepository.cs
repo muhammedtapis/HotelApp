@@ -10,5 +10,7 @@ namespace Hotel.Core.Repositories
     public interface ICustomerRepository : IGenericRepository<Customer>
     {
         Task<IEnumerable<Customer>> GetCustomersWithRoomAsync();
+
+        Task<IEnumerable<Customer>> GetCustomersWithPaymentAsync();
     }
 }

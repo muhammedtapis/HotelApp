@@ -19,21 +19,21 @@ namespace Hotel.Repository.Seeds
                     Id = 1,
                     Amount = 1000,
                     IsPayed = true,
-                    CustomerId = 1,
+                    //CustomerId = 1,
                 },
                 new Payment()
                 {
                     Id = 2,
                     Amount = 2000,
                     IsPayed = true,
-                    CustomerId = 2,
+                    //CustomerId = 2,
                 },
                 new Payment()
                 {
                     Id = 3,
                     Amount = 3000,
                     IsPayed = false,
-                    CustomerId = 3,
+                    //CustomerId = 3,
                 }
 
                 );

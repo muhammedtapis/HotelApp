@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace Hotel.Core.Models
 {
-    public class Payment
+    public class Payment : BaseEntity
     {
-        public int Id { get; set; }
         public decimal Amount { get; set; }
         public bool IsPayed { get; set; }
 
         //navigation prop.
-        public int CustomerId { get; set; }
-
+        //public int CustomerId { get; set; }
         public virtual Customer Customer { get; set; } //one to one with
     }
 }

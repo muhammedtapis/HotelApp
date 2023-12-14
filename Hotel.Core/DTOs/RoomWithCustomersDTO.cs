@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Hotel.Core.DTOs
 {
-    public class RoomWithFloorDTO : RoomDTO
+    public class RoomWithCustomersDTO : RoomDTO
     {
-        public FloorDTO FloorDto { get; set; }
+        //public IEnumerable<CustomerDTO> Customers { get; set; }
     }
 }

@@ -20,12 +20,21 @@ namespace Hotel.Service.Mapping
             CreateMap<Payment, PaymentDTO>().ReverseMap();
             CreateMap<Customer, CustomerDTO>().ReverseMap();
 
+            CreateMap<Payment, PaymentWithCustomerDTO>();
+
             CreateMap<RoomCreateDTO, Room>(); //post metodda çalışır clientten gelen DTO room maplenir ki database işlemi yapılsın.
             CreateMap<RoomUpdateDTO, Room>();
             CreateMap<Room, RoomWithBedsDTO>(); //get metodda çalışır cliente veritabanından gelen room bilgisini gösteriyorz
+            CreateMap<Room, RoomWithCustomersDTO>();
+
             CreateMap<Floor, FloorWithRoomsDTO>(); //get metodda çalışcak bu da sağdaki kısım maplenecek varış noktası en son verinini hali.
             CreateMap<Floor, FloorWithHostelDTO>();
-            CreateMap<Customer, CustomerWithPaymentDTO>();
+
+            CreateMap<Customer, CustomerWithPaymentDTO>()
+                .ForMember(dest => dest.PaymentDto, opt => opt.MapFrom(src => src.Payment)); // eğer DTO sınıfında özel isim verirsen burada o
+            //propertyi özel olarak maplemen lazım !!! yoksa mapleme yapamaz ben PaymentDto ismi verirsem IMapper bunu anlamıyor, böyle belirtmem
+            //gerekiyor ona
+            CreateMap<Customer, CustomerWithRoomDTO>();
             CreateMap<Hostel, HostelWithFloorsDTO>();
         }
     }

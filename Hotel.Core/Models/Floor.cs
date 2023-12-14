@@ -11,7 +11,7 @@ namespace Hotel.Core.Models
         public string Name { get; set; }
 
         //navigation prop. Room ile bire çok ilişki room alt sınıf.
-        public ICollection<Room> Rooms { get; set; } = new List<Room>();
+        public ICollection<Room> Rooms { get; set; }
 
         //hostel ile bire çok ilişki Hostel üst sınıf.
         public Hostel Hostel { get; set; }

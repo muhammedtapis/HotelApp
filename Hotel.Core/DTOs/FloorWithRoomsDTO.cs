@@ -9,6 +9,6 @@ namespace Hotel.Core.DTOs
 {
     public class FloorWithRoomsDTO : FloorDTO
     {
-        public ICollection<Room> Rooms { get; set; } = new List<Room>();
+        public ICollection<RoomDTO> Rooms { get; set; }
     }
 }

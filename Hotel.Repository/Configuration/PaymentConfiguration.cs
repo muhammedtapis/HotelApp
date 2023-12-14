@@ -17,7 +17,7 @@ namespace Hotel.Repository.Configuration
             builder.HasKey(x => x.Id);
 
             //birebir ilişki tanımı. payment alt sınıf gibi
-            builder.HasOne(x => x.Customer).WithOne(x => x.Payment).HasForeignKey<Payment>(x => x.CustomerId);
+            builder.HasOne(x => x.Customer).WithOne(x => x.Payment).HasForeignKey<Payment>(x => x.Id); //customerdan gelen id burda direkt id olcak
 
             builder.Property(x => x.Amount).IsRequired().HasColumnType("decimal(18,2)"); //para değeri toplamda 18 karakter virgülden sonra da 2 karakter olabilir.
         }

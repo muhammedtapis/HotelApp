@@ -13,6 +13,8 @@ namespace Hotel.Core.Repositories
 
         Task<Room> GetSingleRoomByIdWithBedsAsync(int roomId);
 
+        Task<Room> GetSingleRoomByIdWithCustomersAsync(int roomId);
+
         Task<Room> GetSingleRoomByIdWithBedsAndCustomersAsync(int roomId);
     }
 }

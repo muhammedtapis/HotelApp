@@ -33,5 +33,10 @@ namespace Hotel.Repository.Repositories
             //gelen id hangi odanın id eşitse o odayı yataklar ve müşterilerle gösteriyor.
             return await _context.Rooms.Include(x => x.Beds).Include(x => x.Customers).Where(x => x.Id == roomId).SingleOrDefaultAsync();
         }
+
+        public async Task<Room> GetSingleRoomByIdWithCustomersAsync(int roomId)
+        {
+            return await _context.Rooms.Include(x => x.Customers).Where(x => x.Id == roomId).SingleOrDefaultAsync();
+        }
     }
 }

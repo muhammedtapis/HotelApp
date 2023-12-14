@@ -246,24 +246,21 @@ namespace Hotel.Repository.Migrations
             modelBuilder.Entity("Hotel.Core.Models.Payment", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsPayed")
                         .HasColumnType("bit");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("CustomerId")
-                        .IsUnique();
+                    b.HasKey("Id");
 
                     b.ToTable("Payments");
 
@@ -272,22 +269,25 @@ namespace Hotel.Repository.Migrations
                         {
                             Id = 1,
                             Amount = 1000m,
-                            CustomerId = 1,
-                            IsPayed = true
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsPayed = true,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             Amount = 2000m,
-                            CustomerId = 2,
-                            IsPayed = true
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsPayed = true,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             Amount = 3000m,
-                            CustomerId = 3,
-                            IsPayed = false
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsPayed = false,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -384,7 +384,7 @@ namespace Hotel.Repository.Migrations
                 {
                     b.HasOne("Hotel.Core.Models.Customer", "Customer")
                         .WithOne("Payment")
-                        .HasForeignKey("Hotel.Core.Models.Payment", "CustomerId")
+                        .HasForeignKey("Hotel.Core.Models.Payment", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

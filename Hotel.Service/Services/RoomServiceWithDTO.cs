@@ -44,11 +44,23 @@ namespace Hotel.Service.Services
             return CustomResponseDTO<IEnumerable<RoomDTO>>.Success(StatusCodes.Status200OK, roomDTOList);   //oluşturduğumuz custom responseDTO dön
         }
 
-        public async Task<CustomResponseDTO<List<RoomWithFloorDTO>>> GetRoomsWithFloor()
+        public Task<CustomResponseDTO<List<RoomWithFloorDTO>>> GetRoomsWithFloor()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<CustomResponseDTO<List<RoomWithFloorDTO>>> GetRoomsWithFloorAsync()
         {
             var roomsWithFloor = await _roomRepository.GetRoomsWithFloorAsync();
             var roomsWithFloorDTO = _mapper.Map<List<RoomWithFloorDTO>>(roomsWithFloor);
             return CustomResponseDTO<List<RoomWithFloorDTO>>.Success(StatusCodes.Status200OK, roomsWithFloorDTO);
+        }
+
+        public async Task<CustomResponseDTO<RoomWithCustomersDTO>> GetSingleRoomByIdWithCustomersAsync(int roomId)
+        {
+            var roomWithCustomer = await _roomRepository.GetSingleRoomByIdWithCustomersAsync(roomId);
+            var roomWithCustomersDTO = _mapper.Map<RoomWithCustomersDTO>(roomWithCustomer);
+            return CustomResponseDTO<RoomWithCustomersDTO>.Success(StatusCodes.Status200OK, roomWithCustomersDTO);
         }
 
         //overload metod

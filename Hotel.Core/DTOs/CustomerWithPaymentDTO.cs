@@ -9,6 +9,8 @@ namespace Hotel.Core.DTOs
 {
     public class CustomerWithPaymentDTO : CustomerDTO
     {
-        public PaymentDTO Payment { get; set; }
+        //aşağıda Payment yerine başka bir isim verirsen ef core anlayamaz onu bulamıyor null geliyor
+        //biz PaymentDto ismini verdikten sonra MapProfile sayfasında özel olarak bu propertyleri belirttik IMapper için
+        public PaymentDTO PaymentDto { get; set; }
     }
 }

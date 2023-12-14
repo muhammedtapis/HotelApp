@@ -20,5 +20,7 @@ namespace Hotel.Core.Services
         Task<CustomResponseDTO<RoomDTO>> AddAsync(RoomCreateDTO createDTO);
 
         Task<CustomResponseDTO<IEnumerable<RoomDTO>>> AddRangeAsync(IEnumerable<RoomCreateDTO> roomCreateDtoList);
+
+        Task<CustomResponseDTO<RoomWithCustomersDTO>> GetSingleRoomByIdWithCustomersAsync(int roomId);
     }
 }
