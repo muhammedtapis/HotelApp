@@ -10,41 +10,41 @@ namespace Hotel.API.Controllers
     //[ApiController]
     public class FloorController : CustomBaseController
     {
-        private readonly IFloorServiceWithDTO _floorServiceWithDTO;
+        private readonly IFloorServiceWithDTO _floorService;
 
         public FloorController(IFloorServiceWithDTO floorServiceWithDTO)
         {
-            _floorServiceWithDTO = floorServiceWithDTO;
+            _floorService = floorServiceWithDTO;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll() => CreateActionResult(await _floorServiceWithDTO.GetAllAsync());
+        public async Task<IActionResult> GetAll() => CreateActionResult(await _floorService.GetAllAsync());
 
         [HttpGet("[action]/{id}")]
-        public async Task<IActionResult> GetById(int id) => CreateActionResult(await _floorServiceWithDTO.GetByIdAsync(id));
+        public async Task<IActionResult> GetById(int id) => CreateActionResult(await _floorService.GetByIdAsync(id));
 
         [HttpGet("[action]/{id}")]
-        public async Task<IActionResult> AnyFloor(int id) => CreateActionResult(await _floorServiceWithDTO.AnyAsync(x => x.Id == id));
+        public async Task<IActionResult> AnyFloor(int id) => CreateActionResult(await _floorService.AnyAsync(x => x.Id == id));
 
         [HttpGet("[action]/{id}")]
-        public async Task<IActionResult> GetSingleFloorByIdWithRooms(int id) => CreateActionResult(await _floorServiceWithDTO.GetSingleFloorByIdWithRoomsAsync(id));
+        public async Task<IActionResult> GetSingleFloorByIdWithRooms(int id) => CreateActionResult(await _floorService.GetSingleFloorByIdWithRoomsAsync(id));
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetFloorsWithHostelAsync() => CreateActionResult(await _floorServiceWithDTO.GetFloorsWithHostelAsync());
+        public async Task<IActionResult> GetFloorsWithHostelAsync() => CreateActionResult(await _floorService.GetFloorsWithHostelAsync());
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddFloor(FloorDTO request) => CreateActionResult(await _floorServiceWithDTO.AddAsync(request));
+        public async Task<IActionResult> AddFloor(FloorDTO request) => CreateActionResult(await _floorService.AddAsync(request));
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddRangeFloor(IEnumerable<FloorDTO> dtoList) => CreateActionResult(await _floorServiceWithDTO.AddRangeAsync(dtoList));
+        public async Task<IActionResult> AddRangeFloor(IEnumerable<FloorDTO> dtoList) => CreateActionResult(await _floorService.AddRangeAsync(dtoList));
 
         [HttpPut("[action]")]
-        public async Task<IActionResult> UpdateFloor(FloorDTO request) => CreateActionResult(await _floorServiceWithDTO.UpdateAsync(request));
+        public async Task<IActionResult> UpdateFloor(FloorDTO request) => CreateActionResult(await _floorService.UpdateAsync(request));
 
         [HttpDelete("[action]/{id}")]
-        public async Task<IActionResult> RemoveFloor(int id) => CreateActionResult(await _floorServiceWithDTO.RemoveAsync(id));
+        public async Task<IActionResult> RemoveFloor(int id) => CreateActionResult(await _floorService.RemoveAsync(id));
 
         [HttpDelete("[action]")]
-        public async Task<IActionResult> RemoveRangeFloor(IEnumerable<int> idList) => CreateActionResult(await _floorServiceWithDTO.RemoveRangeAsync(idList));
+        public async Task<IActionResult> RemoveRangeFloor(IEnumerable<int> idList) => CreateActionResult(await _floorService.RemoveRangeAsync(idList));
     }
 }

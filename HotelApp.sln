@@ -3,17 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Core", "Hotel.Core\Hotel.Core.csproj", "{8B043E4B-35B2-4348-A7EF-A4F57CE1B9D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Core", "Hotel.Core\Hotel.Core.csproj", "{8B043E4B-35B2-4348-A7EF-A4F57CE1B9D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Repository", "Hotel.Repository\Hotel.Repository.csproj", "{5740028F-83DE-4178-84E4-77B2A5DC9623}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Repository", "Hotel.Repository\Hotel.Repository.csproj", "{5740028F-83DE-4178-84E4-77B2A5DC9623}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Service", "Hotel.Service\Hotel.Service.csproj", "{B20D2C89-70A9-439C-9B87-8D0888D2D5B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Service", "Hotel.Service\Hotel.Service.csproj", "{B20D2C89-70A9-439C-9B87-8D0888D2D5B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.API", "Hotel.API\Hotel.API.csproj", "{C18CACE8-4784-4876-B71C-77406A93E455}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.API", "Hotel.API\Hotel.API.csproj", "{C18CACE8-4784-4876-B71C-77406A93E455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.WEB", "Hotel.WEB\Hotel.WEB.csproj", "{53F532E4-6F0D-4512-93EA-91726FCBF19A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.WEB", "Hotel.WEB\Hotel.WEB.csproj", "{53F532E4-6F0D-4512-93EA-91726FCBF19A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Caching", "Hotel.Caching\Hotel.Caching.csproj", "{52C6AA98-BB43-4001-AE24-68B3B8B11AD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Caching", "Hotel.Caching\Hotel.Caching.csproj", "{52C6AA98-BB43-4001-AE24-68B3B8B11AD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{535B9A9D-0855-4BB2-B3C2-8205706101D3}"
+	ProjectSection(SolutionItems) = preProject
+		Ports.txt = Ports.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

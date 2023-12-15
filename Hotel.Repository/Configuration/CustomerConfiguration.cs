@@ -15,6 +15,7 @@ namespace Hotel.Repository.Configuration
         {
             //productın bir kategorisi olabilir kategorinin ise birden fazla product olabilir.foreign key de bu şekilde verilebilir
             builder.HasOne(x => x.Room).WithMany(x => x.Customers).HasForeignKey(x => x.RoomId);
+            builder.Property(x => x.Payment).IsRequired().HasColumnType("decimal(18,2)"); //para değeri toplamda 18 karakter virgülden sonra da 2 karakter olabilir.
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Hotel.Core.Repositories;
+﻿using Autofac;
+using Module = Autofac.Module;
+using Hotel.Core.Repositories;
 using Hotel.Core.Services;
 using Hotel.Core.UnitOfWorks;
 using Hotel.Repository.Repositories;
@@ -7,10 +9,8 @@ using Hotel.Repository;
 using Hotel.Service.Mapping;
 using Hotel.Service.Services;
 using System.Reflection;
-using Autofac;
-using Module = Autofac.Module;
 
-namespace Hotel.API.Modules
+namespace Hotel.WEB.Modules
 {
     public class RepoServiceModule : Module
     {

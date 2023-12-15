@@ -20,7 +20,6 @@ namespace Hotel.Repository
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Floor> Floors { get; set; }
         public DbSet<Hostel> Hostels { get; set; }
-        public DbSet<Payment> Payments { get; set; }
         public DbSet<Bed> Beds { get; set; }
 
         //entity configuration override ettik model oluşurken çalışcak.

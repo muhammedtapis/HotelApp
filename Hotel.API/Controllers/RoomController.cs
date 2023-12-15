@@ -8,41 +8,41 @@ namespace Hotel.API.Controllers
 {
     public class RoomController : CustomBaseController
     {
-        private readonly IRoomServiceWithDTO _roomServiceWithDTO;
+        private readonly IRoomServiceWithDTO _roomService;
 
         public RoomController(IRoomServiceWithDTO roomServiceWithDTO)
         {
-            _roomServiceWithDTO = roomServiceWithDTO;
+            _roomService = roomServiceWithDTO;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll() => CreateActionResult(await _roomServiceWithDTO.GetAllAsync());
+        public async Task<IActionResult> GetAll() => CreateActionResult(await _roomService.GetAllAsync());
 
         [HttpGet("[action]/{id}")]
-        public async Task<IActionResult> GetById(int id) => CreateActionResult(await _roomServiceWithDTO.GetByIdAsync(id));
+        public async Task<IActionResult> GetById(int id) => CreateActionResult(await _roomService.GetByIdAsync(id));
 
         [HttpGet("[action]/{id}")]
-        public async Task<IActionResult> AnyRoom(int id) => CreateActionResult(await _roomServiceWithDTO.AnyAsync(x => x.Id == id));
+        public async Task<IActionResult> AnyRoom(int id) => CreateActionResult(await _roomService.AnyAsync(x => x.Id == id));
 
         [HttpGet("[action]/{id}")]
-        public async Task<IActionResult> GetSingleRoomByIdWithCustomers(int id) => CreateActionResult(await _roomServiceWithDTO.GetSingleRoomByIdWithCustomersAsync(id));
+        public async Task<IActionResult> GetSingleRoomByIdWithCustomers(int id) => CreateActionResult(await _roomService.GetSingleRoomByIdWithCustomersAsync(id));
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetRoomsWithFloor() => CreateActionResult(await _roomServiceWithDTO.GetRoomsWithFloor());
+        public async Task<IActionResult> GetRoomsWithFloor() => CreateActionResult(await _roomService.GetRoomsWithFloor());
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddRoom(RoomCreateDTO request) => CreateActionResult(await _roomServiceWithDTO.AddAsync(request));
+        public async Task<IActionResult> AddRoom(RoomCreateDTO request) => CreateActionResult(await _roomService.AddAsync(request));
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddRangeRoom(IEnumerable<RoomCreateDTO> request) => CreateActionResult(await _roomServiceWithDTO.AddRangeAsync(request));
+        public async Task<IActionResult> AddRangeRoom(IEnumerable<RoomCreateDTO> request) => CreateActionResult(await _roomService.AddRangeAsync(request));
 
         [HttpPut("[action]")]
-        public async Task<IActionResult> UpdateRoom(RoomUpdateDTO request) => CreateActionResult(await _roomServiceWithDTO.UpdateAsync(request));
+        public async Task<IActionResult> UpdateRoom(RoomUpdateDTO request) => CreateActionResult(await _roomService.UpdateAsync(request));
 
         [HttpDelete("[action]")]
-        public async Task<IActionResult> RemoveRoom(int id) => CreateActionResult(await _roomServiceWithDTO.RemoveAsync(id));
+        public async Task<IActionResult> RemoveRoom(int id) => CreateActionResult(await _roomService.RemoveAsync(id));
 
         [HttpDelete("[action]")]
-        public async Task<IActionResult> RemoveRangeRoom(IEnumerable<int> idList) => CreateActionResult(await _roomServiceWithDTO.RemoveRangeAsync(idList));
+        public async Task<IActionResult> RemoveRangeRoom(IEnumerable<int> idList) => CreateActionResult(await _roomService.RemoveRangeAsync(idList));
     }
 }

@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Save";
+}
+@model CustomerCreateDTO
+
+<h1>Save Customer</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Save" method="post" asp-controller="Customer">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PassportNo"></label>
+                <input asp-for="PassportNo" class="form-control" />
+                <span asp-validation-for="PassportNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="CheckInDate" class="col-md-4 col-form-label" asp-for="CheckInDate"></label>
+                <div class="col-md-8">
+                    <input asp-for="CheckInDate" class="form-control">
+                    <span class="text-danger" asp-validation-for="CheckInDate"></span> <!-- signupViewmodel içindeli validation attr burada gözükecek.-->
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="CheckInDate" class="col-md-4 col-form-label" asp-for="CheckOutDate"></label>
+                <div class="col-md-8">
+                    <input asp-for="CheckOutDate" class="form-control">
+                    <span class="text-danger" asp-validation-for="CheckOutDate"></span> <!-- signupViewmodel içindeli validation attr burada gözükecek.-->
+                </div>
+            </div>
+
+@*             <div class="form-group">
+                <label asp-for="Payment"></label>
+                <input asp-for="Payment" class="form-control" />
+            </div> *@
+            <div class="form-group">
+                <label asp-for="IsPayed"></label>
+                <input asp-for="IsPayed" type="checkbox" />
+                <span asp-validation-for="IsPayed" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RoomId"></label>
+                <select asp-for="RoomId" asp-items="ViewBag.Rooms" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

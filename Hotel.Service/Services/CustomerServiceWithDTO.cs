@@ -16,22 +16,19 @@ namespace Hotel.Service.Services
     public class CustomerServiceWithDTO : ServiceWithDTO<Customer, CustomerDTO>, ICustomerServiceWithDTO
     {
         private readonly ICustomerRepository _customerRepository;
+        private readonly IRoomRepository _roomRepository; //odayla ilgili işlemler var o yüzden aldık
 
-        public CustomerServiceWithDTO(IGenericRepository<Customer> repository, IUnitOfWork unitOfWork, IMapper mapper, ICustomerRepository customerRepository) : base(repository, unitOfWork, mapper)
+        public CustomerServiceWithDTO(IGenericRepository<Customer> repository, IUnitOfWork unitOfWork, IMapper mapper, ICustomerRepository customerRepository, IRoomRepository roomRepository) : base(repository, unitOfWork, mapper)
         {
             _customerRepository = customerRepository;
+            _roomRepository = roomRepository;
         }
 
-        public async Task<CustomResponseDTO<IEnumerable<CustomerWithPaymentDTO>>> GetCustomersWithPaymentAsync()
-        {
-            var customers = await _customerRepository.GetCustomersWithPaymentAsync();
-            var customersWithPaymentDto = _mapper.Map<IEnumerable<CustomerWithPaymentDTO>>(customers);
-            return CustomResponseDTO<IEnumerable<CustomerWithPaymentDTO>>.Success(StatusCodes.Status200OK, customersWithPaymentDto);
-        }
-
+        //bu metodda bi saçmalık var bak bir ara
         public async Task<CustomResponseDTO<decimal>> GetCustomerWithPriceAsync(int id)
         {
-            var price = await CalculateAmountAsync(id);
+            var customer = await _customerRepository.GetByIdAsync(id);
+            var price = await CalculateAmountAsync(customer);
             return CustomResponseDTO<decimal>.Success(StatusCodes.Status200OK, price);
         }
 
@@ -42,20 +39,32 @@ namespace Hotel.Service.Services
             return CustomResponseDTO<IEnumerable<CustomerWithRoomDTO>>.Success(StatusCodes.Status200OK, customersWithRoomDto);
         }
 
-        public async Task<decimal> CalculateAmountAsync(int id)
+        //kullanıcıdan gelen odaId bilgisine göre odayı bulup oda fiyatını çektik.
+        public async Task<decimal> CalculateAmountAsync(Customer customer)
         {
-            var customer = await _customerRepository.GetByIdAsync(id);
-            var roomPrice = customer.Room.Price;
-            customer.CheckInDate = DateTime.UtcNow;
-            customer.CheckOutDate = DateTime.UtcNow.AddDays(3);
+            var room = await _roomRepository.GetByIdAsync(customer.RoomId);
             TimeSpan difference = customer.CheckOutDate - customer.CheckInDate;
-            return (roomPrice * difference.Days);
+            return room.Price * difference.Days;
         }
 
-        //public async Task<CustomResponseDTO<PaymentDTO>> SetPaymentAsync(PaymentDTO paymentDTO, int customerId)
-        //{
-        //    //  var payment = _mapper.Map<Payment>(paymentDTO);
-        //    //  await _customerRepository.AddAsync(paymentDTO);
-        //}
+        public async Task<CustomResponseDTO<CustomerDTO>> AddAsync(CustomerCreateDTO createDTO)
+        {
+            var customer = _mapper.Map<Customer>(createDTO);
+            customer.Payment = await CalculateAmountAsync(customer);
+            await _customerRepository.AddAsync(customer);
+            await _unitOfWork.CommitAsync();
+            var customerDto = _mapper.Map<CustomerDTO>(customer);
+            return CustomResponseDTO<CustomerDTO>.Success(StatusCodes.Status200OK, customerDto);
+        }
+
+        public async Task<CustomResponseDTO<CustomerDTO>> UpdateAsync(CustomerUpdateDTO updateDTO)
+        {
+            var customer = _mapper.Map<Customer>(updateDTO);
+            customer.Payment = await CalculateAmountAsync(customer);
+            _customerRepository.Update(customer);
+            await _unitOfWork.CommitAsync();
+            var newCustomerDto = _mapper.Map<CustomerDTO>(customer);
+            return CustomResponseDTO<CustomerDTO>.Success(StatusCodes.Status200OK, newCustomerDto);
+        }
     }
 }

@@ -15,8 +15,11 @@ namespace Hotel.Core.Models
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
 
+        public decimal Payment { get; set; }
+        public bool IsPayed { get; set; }
+
         //navigation prop. payment ile bire bir ilişki payment alt sınıf.
-        public Payment Payment { get; set; }
+        //public Payment Payment { get; set; }
 
         public Room Room { get; set; } //room ile bire çok ilişki room üst sınıf.
         public int RoomId { get; set; }

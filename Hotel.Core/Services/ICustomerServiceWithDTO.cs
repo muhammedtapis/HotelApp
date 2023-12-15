@@ -14,11 +14,15 @@ namespace Hotel.Core.Services
     public interface ICustomerServiceWithDTO : IServiceWithDTO<Customer, CustomerDTO>
     {
         //servisin customer response dönmesi gerek ki controllerda business kod olmasın
-        Task<CustomResponseDTO<IEnumerable<CustomerWithPaymentDTO>>> GetCustomersWithPaymentAsync();
 
         Task<CustomResponseDTO<IEnumerable<CustomerWithRoomDTO>>> GetCustomersWithRoomAsync();
 
         Task<CustomResponseDTO<decimal>> GetCustomerWithPriceAsync(int id);
+
+        //generic serviste başka çalışıyo overload ettik aldığı parametre değişti.
+        Task<CustomResponseDTO<CustomerDTO>> AddAsync(CustomerCreateDTO createDTO);
+
+        Task<CustomResponseDTO<CustomerDTO>> UpdateAsync(CustomerUpdateDTO updateDTO);
 
         //   Task<CustomResponseDTO<PaymentDTO>> SetPaymentAsync(PaymentDTO paymentDTO, int customerId);
     }
